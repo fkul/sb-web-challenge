@@ -1,5 +1,6 @@
 import type { NextPage } from "next"
 import styled from "styled-components"
+import DepositsAndWithdrawals from "@/components/DepositsAndWithdrawals"
 import Transactions from "@/components/Transactions"
 
 const PageWrapper = styled.div`
@@ -149,6 +150,10 @@ const Home: NextPage = () => {
       </PageSection>
       <PageSection>
         <h2>Deposits & Withdrawals</h2>
+        <DepositsAndWithdrawals
+          transactions={transactions}
+          eurRates={eurRates}
+        />
       </PageSection>
     </PageWrapper>
   )
