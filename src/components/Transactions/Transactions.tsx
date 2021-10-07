@@ -1,18 +1,22 @@
 import Moment from "react-moment"
-import type { Rates } from "@/types/Rates"
-import type { Transaction } from "@/types/Transaction"
+import type { ApiTransactions } from "@/types/ApiTransactions"
+import type { ApiRates } from "@/types/ApiRates"
 import Equiv from "@/components/Equiv"
 import PriceString from "@/components/PriceString"
 
 interface TransactionsProps {
-  transactions: Transaction[] | null
-  eurRates: Rates | null
+  transactions: ApiTransactions
+  eurRates: ApiRates
 }
 
 const Transactions = ({ transactions, eurRates }: TransactionsProps) => {
-  return !transactions ? (
-    <span>Loading...</span>
-  ) : (
+  if (transactions === null) {
+    return <span>Loading...</span>
+  } else if (!transactions) {
+    return <span>Failed to load transactions.</span>
+  }
+
+  return (
     <table>
       <thead>
         <tr>

@@ -1,20 +1,23 @@
-import type { Rates } from "@/types/Rates"
+import type { ApiRates } from "@/types/ApiRates"
+import type { ApiTransactions } from "@/types/ApiTransactions"
 import type { Transaction } from "@/types/Transaction"
 import Equiv from "@/components/Equiv"
 import PriceString from "@/components/PriceString"
 import TransactionAggregator from "@/entities/TransactionAggregator"
 
 interface DepositsAndWithdrawalsProps {
-  transactions: Transaction[] | null
-  eurRates: Rates | null
+  transactions: ApiTransactions
+  eurRates: ApiRates
 }
 
 const DepositsAndWithdrawals = ({
   transactions,
   eurRates,
 }: DepositsAndWithdrawalsProps) => {
-  if (!transactions) {
+  if (transactions === null) {
     return <span>Loading...</span>
+  } else if (!transactions) {
+    return <span>Failed to load transactions.</span>
   }
 
   type AggregatedTransactions = Map<string, TransactionAggregator>
@@ -26,7 +29,6 @@ const DepositsAndWithdrawals = ({
       if (!aggregationMap.has(currency)) {
         aggregationMap.set(currency, new TransactionAggregator(currency))
       }
-
       aggregationMap.get(currency).add(data)
     })
 

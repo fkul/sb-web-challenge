@@ -1,28 +1,31 @@
-import type { Rates } from "@/types/Rates"
+import type { ApiRates } from "@/types/ApiRates"
 import PriceString from "@/components/PriceString"
 
 interface EquivProps {
   amount: number
   fromCurrency: string
   toCurrency: string
-  rates: Rates | null
+  rates: ApiRates
 }
 
 const Equiv = ({ amount, fromCurrency, toCurrency, rates }: EquivProps) => {
-  if (!rates) {
+  if (rates === null) {
     return <>Loading...</>
-  } else {
-    const rate = rates[fromCurrency.toLowerCase()] || null
-    return (
-      <>
-        {rate ? (
-          <PriceString price={amount * rate} currency={toCurrency} />
-        ) : (
-          "N/A"
-        )}
-      </>
-    )
+  } else if (!rates) {
+    return <>Error!</>
   }
+
+  const rate = rates[fromCurrency.toLowerCase()] || null
+
+  return (
+    <>
+      {rate ? (
+        <PriceString price={amount * rate} currency={toCurrency} />
+      ) : (
+        "N/A"
+      )}
+    </>
+  )
 }
 
 export default Equiv
