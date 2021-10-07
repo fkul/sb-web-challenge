@@ -3,8 +3,8 @@ import axios from "axios"
 const source = axios.CancelToken.source()
 
 export const apiClient = axios.create({
-  baseURL: "http://localhost:8080/api",
-  timeout: 10000,
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  timeout: process.env.NEXT_PUBLIC_API_TIMEOUT_MS as number | undefined,
   cancelToken: source.token,
 })
 
