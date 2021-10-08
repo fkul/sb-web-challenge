@@ -10,7 +10,6 @@ export const GlobalStyles = createGlobalStyle`
   body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    min-height: 100vh;
     color: ${({ theme }) => theme.colors.font};
     background-color: ${({ theme }) => theme.colors.bgPrimary};
   }
@@ -18,22 +17,6 @@ export const GlobalStyles = createGlobalStyle`
   a {
     color: ${({ theme }) => theme.colors.primary};
     text-decoration: none;
-  }
-
-  table {
-    border-spacing: 0;
-    border-collapse: collapse;
-    width: 100%;
-
-    th, td {
-      border: 1px solid ${({ theme }) => theme.colors.border};;
-      padding: 6px 10px;
-    }
-
-    th {
-      background-color: ${({ theme }) => theme.colors.bgSecondary};
-      text-transform: uppercase;
-    }
   }
 
   * {

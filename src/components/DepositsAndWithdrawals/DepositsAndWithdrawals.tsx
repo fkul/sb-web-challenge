@@ -3,6 +3,7 @@ import type { ApiTransactions } from "@/types/ApiTransactions"
 import type { Transaction } from "@/types/Transaction"
 import Equiv from "@/components/Equiv"
 import PriceString from "@/components/PriceString"
+import Table from "@/components/Table"
 import TransactionAggregator from "@/entities/TransactionAggregator"
 
 interface DepositsAndWithdrawalsProps {
@@ -38,7 +39,7 @@ const DepositsAndWithdrawals = ({
   const aggregatedTransactions = aggregate(transactions!)
 
   return (
-    <table>
+    <Table>
       <thead>
         <tr>
           <th>currency</th>
@@ -96,7 +97,7 @@ const DepositsAndWithdrawals = ({
             </tr>
           ))}
       </tbody>
-    </table>
+    </Table>
   )
 }
 

@@ -3,6 +3,7 @@ import type { ApiTransactions } from "@/types/ApiTransactions"
 import type { ApiRates } from "@/types/ApiRates"
 import Equiv from "@/components/Equiv"
 import PriceString from "@/components/PriceString"
+import Table from "@/components/Table"
 
 interface TransactionsProps {
   transactions: ApiTransactions
@@ -17,7 +18,7 @@ const Transactions = ({ transactions, eurRates }: TransactionsProps) => {
   }
 
   return (
-    <table>
+    <Table>
       <thead>
         <tr>
           <th>timestamp</th>
@@ -54,7 +55,7 @@ const Transactions = ({ transactions, eurRates }: TransactionsProps) => {
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
   )
 }
 

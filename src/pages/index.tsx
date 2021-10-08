@@ -8,10 +8,11 @@ import { useEurRates } from "@/hooks/useEurRates"
 const PageWrapper = styled.div`
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 20px;
 `
 
 const PageSection = styled.section`
-  margin: 80px 0;
+  margin: 60px 0;
 `
 
 const Home: NextPage = () => {
