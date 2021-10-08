@@ -1,4 +1,4 @@
-import Moment from "react-moment"
+import dayjs from "dayjs"
 import type { ApiTransactions } from "@/types/ApiTransactions"
 import type { ApiRates } from "@/types/ApiRates"
 import Equiv from "@/components/Equiv"
@@ -32,9 +32,7 @@ const Transactions = ({ transactions, eurRates }: TransactionsProps) => {
       <tbody>
         {transactions.map((transaction) => (
           <tr key={transaction.id}>
-            <td>
-              <Moment format="MMM DD YYYY">{transaction.timestamp}</Moment>
-            </td>
+            <td>{dayjs(transaction.timestamp).format("MMM DD YYYY")}</td>
             <td>{transaction.currency}</td>
             <td>
               <PriceString
